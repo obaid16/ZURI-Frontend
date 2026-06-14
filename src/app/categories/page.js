@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { getImageUrl } from "@/utils/api";
 import { gsap } from "gsap";
@@ -85,9 +86,11 @@ export default function CategoriesPage() {
                   className="cat-item group bg-matte-black border border-white/5 rounded-xl overflow-hidden hover:border-gold/30 transition-all duration-300 shadow-2xl flex flex-col justify-between"
                 >
                   <div className="relative h-60 w-full overflow-hidden">
-                    <img
+                    <Image
                       src={getImageUrl(category.image)}
                       alt={category.name}
+                      fill
+                      unoptimized
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85" />

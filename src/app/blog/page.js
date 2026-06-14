@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { BookOpen, Calendar, Clock, User, X } from "lucide-react";
+import Image from "next/image";
 import { getImageUrl } from "@/utils/api";
 
 export default function BlogPage() {
@@ -72,9 +73,11 @@ export default function BlogPage() {
                   className="group bg-matte-black border border-white/5 rounded-xl overflow-hidden hover:border-gold/20 hover:shadow-2xl transition-all duration-300 flex flex-col cursor-pointer"
                 >
                   <div className="relative h-56 w-full overflow-hidden">
-                    <img
+                    <Image
                       src={image}
                       alt={post.title}
+                      fill
+                      unoptimized
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85" />
@@ -126,9 +129,12 @@ export default function BlogPage() {
               </button>
 
               <div className="mt-2 space-y-4 max-h-[80vh] overflow-y-auto pr-2">
-                <img
+                <Image
                   src={selectedPost.image}
                   alt={selectedPost.title}
+                  width={800}
+                  height={256}
+                  unoptimized
                   className="w-full h-64 object-cover rounded-lg border border-white/5"
                 />
 

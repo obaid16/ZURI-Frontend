@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ShieldCheck, Truck, Factory, Cpu, Layers, DollarSign, PenTool, Flame, Box, Compass } from "lucide-react";
 import { useQuote } from "@/components/QuoteContext";
 import { getImageUrl } from "@/utils/api";
@@ -120,10 +121,12 @@ export default function Home() {
           {/* Right visual */}
           <div className="lg:col-span-4 relative flex items-center justify-center">
             <div className="hero-fade-sub relative border border-white/5 rounded-3xl p-6 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-md overflow-hidden h-[340px] md:h-[400px] w-full max-w-sm flex items-center justify-center image-clip-path shadow-2xl">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=800"
                 alt="Branded Cap"
-                className="w-full h-full object-contain filter drop-shadow-[0_25px_40px_rgba(16,183,255,0.2)]"
+                fill
+                unoptimized
+                className="object-contain filter drop-shadow-[0_25px_40px_rgba(16,183,255,0.2)]"
               />
             </div>
           </div>
@@ -203,9 +206,11 @@ export default function Home() {
                   className={`cat-fade ${colSpan} bg-navy-light border border-white/5 hover:border-gold/30 rounded-2xl overflow-hidden flex flex-col justify-between group shadow-2xl relative`}
                 >
                   <div className={`relative ${heightClass} w-full overflow-hidden`}>
-                    <img
+                    <Image
                       src={image}
                       alt={cat.name}
+                      fill
+                      unoptimized
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-85" />
@@ -260,9 +265,11 @@ export default function Home() {
                     className="w-[280px] md:w-[320px] bg-navy-light border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between group shadow-2xl shrink-0 hover:border-gold/25 transition-colors"
                   >
                     <Link href={`/products/${productId}`} className="relative h-60 w-full overflow-hidden block bg-matte-black/60">
-                      <img
+                      <Image
                         src={getImageUrl(product.images[0])}
                         alt={product.name}
+                        fill
+                        unoptimized
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-4 left-4 bg-black/65 border border-white/10 px-3 py-1 rounded text-[9px] text-gold font-bold uppercase tracking-wider">
@@ -418,7 +425,7 @@ export default function Home() {
             
             <div className="bg-navy-light border border-white/5 p-6 rounded-2xl max-w-md mx-4 shrink-0">
               <p className="text-white/85 font-serif italic text-xs leading-relaxed mb-4">
-                "Zuri's double-stiffened buckrams transformed our custom baseball crowns. Before, we faced collapse reviews during sea transit. Now, structure retains posture."
+                {"\"Zuri's double-stiffened buckrams transformed our custom baseball crowns. Before, we faced collapse reviews during sea transit. Now, structure retains posture.\""}
               </p>
               <div>
                 <span className="text-gold font-serif text-[10px] font-bold uppercase tracking-wider block">Harrison Ford Jr.</span>
@@ -428,7 +435,7 @@ export default function Home() {
 
             <div className="bg-navy-light border border-white/5 p-6 rounded-2xl max-w-md mx-4 shrink-0">
               <p className="text-white/85 font-serif italic text-xs leading-relaxed mb-4">
-                "Finding twill fabrics rolls matching colors across seasons is challenging. Zuri's dyeing controls provide absolute batch consistency. Recommended partner."
+                {"\"Finding twill fabrics rolls matching colors across seasons is challenging. Zuri's dyeing controls provide absolute batch consistency. Recommended partner.\""}
               </p>
               <div>
                 <span className="text-gold font-serif text-[10px] font-bold uppercase tracking-wider block">Marcus V. Croft</span>
@@ -438,7 +445,7 @@ export default function Home() {
 
             <div className="bg-navy-light border border-white/5 p-6 rounded-2xl max-w-md mx-4 shrink-0">
               <p className="text-white/85 font-serif italic text-xs leading-relaxed mb-4">
-                "The brass slider adjusters finishing is impeccable. Corrosion protection stands up to sweat wear tests beautifully. B2B volume quotes are highly competitive."
+                {"\"The brass slider adjusters finishing is impeccable. Corrosion protection stands up to sweat wear tests beautifully. B2B volume quotes are highly competitive.\""}
               </p>
               <div>
                 <span className="text-gold font-serif text-[10px] font-bold uppercase tracking-wider block">Sophia Jenkins</span>
@@ -449,7 +456,7 @@ export default function Home() {
             {/* Duplicated for loop */}
             <div className="bg-navy-light border border-white/5 p-6 rounded-2xl max-w-md mx-4 shrink-0">
               <p className="text-white/85 font-serif italic text-xs leading-relaxed mb-4">
-                "Zuri's double-stiffened buckrams transformed our custom baseball crowns. Before, we faced collapse reviews during sea transit. Now, structure retains posture."
+                {"\"Zuri's double-stiffened buckrams transformed our custom baseball crowns. Before, we faced collapse reviews during sea transit. Now, structure retains posture.\""}
               </p>
               <div>
                 <span className="text-gold font-serif text-[10px] font-bold uppercase tracking-wider block">Harrison Ford Jr.</span>
@@ -459,7 +466,7 @@ export default function Home() {
 
             <div className="bg-navy-light border border-white/5 p-6 rounded-2xl max-w-md mx-4 shrink-0">
               <p className="text-white/85 font-serif italic text-xs leading-relaxed mb-4">
-                "Finding twill fabrics rolls matching colors across seasons is challenging. Zuri's dyeing controls provide absolute batch consistency. Recommended partner."
+                {"\"Finding twill fabrics rolls matching colors across seasons is challenging. Zuri's dyeing controls provide absolute batch consistency. Recommended partner.\""}
               </p>
               <div>
                 <span className="text-gold font-serif text-[10px] font-bold uppercase tracking-wider block">Marcus V. Croft</span>
@@ -505,7 +512,13 @@ export default function Home() {
                   className="bg-navy-light border border-white/5 rounded-2xl overflow-hidden hover:border-gold/25 transition-all shadow-2xl flex flex-col justify-between group"
                 >
                   <div className="h-52 w-full overflow-hidden relative">
-                    <img src={getImageUrl(post.coverImage || post.image)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <Image
+                      src={getImageUrl(post.coverImage || post.image)}
+                      alt={post.title}
+                      fill
+                      unoptimized
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
                     <span className="absolute bottom-4 left-4 bg-gold text-black text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded">
                       {post.category}
                     </span>
