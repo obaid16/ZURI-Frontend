@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-dark: #050505;
+  --color-navy: #0b0f19;
+  --color-navy-light: #121829;
+  --color-gold: #10b7ff;
+  --color-gold-light: #4cd0ff;
+  --color-gold-dark: #062b73;
+  --color-matte-black: #050505;
+  --color-matte-gray: #0a0e17;
+  
+  --font-serif: var(--font-space-grotesk), sans-serif;
+  --font-sans: var(--font-jakarta), sans-serif;
+}
+
+/* Global box-sizing reset for consistent layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Prevent images from causing horizontal overflow */
+img, video, iframe, embed, object {
+  max-width: 100%;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+}
+
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* 1. SVG Noise Grain Background Overlay */
+body::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.012;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 2. Premium Cyan Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #10b7ff;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #062b73;
+}
+
+/* Selection Highlight */
+::selection {
+  background-color: rgba(16, 183, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Metallic cyan text gradients */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #10b7ff 50%, #062b73 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Rotated Micro Label stamps */
+.vertical-label {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+/* Bento Border Highlight with Cyan glow */
+.bento-border {
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: linear-gradient(135deg, rgba(18, 24, 41, 0.6) 0%, rgba(5, 5, 5, 0.8) 100%);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.bento-border:hover {
+  border-color: rgba(16, 183, 255, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(16, 183, 255, 0.08);
+}
+
+/* Testimonial marquee animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Glow Mouse Spotlight spot with Cyan */
+.radial-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 183, 255, 0.05) 0%, rgba(16, 183, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Mask reveal clipping frames */
+.image-clip-path {
+  clip-path: inset(0% 0% 0% 0% round 12px);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.image-clip-path:hover {
+  clip-path: inset(2% 2% 2% 2% round 16px);
+}
+
+/* Scrollbar-none utility for mobile horizontal scrollers */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth fade-in for dynamically loaded content */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+/* Better mobile tap targets */
+@media (max-width: 768px) {
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
